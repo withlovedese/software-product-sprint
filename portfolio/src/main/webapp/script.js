@@ -28,8 +28,9 @@ function addRandomGreeting() {
 }
 
 //gets content from /data url
-async function getGreetingUsingAsyncAwait() {
-  const response = await fetch('/data');
-  const greeting = await response.text();
+async function getGreetingUsingAsyncAwait(){
+const response = await fetch('/data');
+  const greeting = await response.json();
   document.getElementById('greetings-container').innerText = greeting;
 }
+  
