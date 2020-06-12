@@ -31,6 +31,7 @@ function getServerStats() {
     statsListElement.appendChild(
         createListElement('Used memory: ' + stats.usedMemory));
   });
+  document.getElementById('server-stats-container').innerText = stats;
 }
 
 /** Creates an <li> element containing text. */

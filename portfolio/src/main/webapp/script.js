@@ -16,8 +16,7 @@
  * Adds a random greeting to the page.
  */
 function addRandomGreeting() {
-  const greetings =
-      ['When we hit our lowest point, we are open to the greatest change.', 'Be the best you can be!', 'Light can be found in the darkest of places if only one remembers to turn on the light ;)', 'When you want something, all the universe conspires to help you achieve it'];
+  const greetings = ['When we hit our lowest point, we are open to the greatest change.', 'Be the best you can be!', 'Light can be found in the darkest of places if only one remembers to turn on the light ;)', 'When you want something, all the universe conspires to help you achieve it'];
 
   // Pick a random greeting.
   const greeting = greetings[Math.floor(Math.random() * greetings.length)];
@@ -28,8 +27,16 @@ function addRandomGreeting() {
 }
 
 //gets content from /data url
-async function getGreetingUsingAsyncAwait() {
-  const response = await fetch('/data');
-  const greeting = await response.text();
-  document.getElementById('greetings-container').innerText = greeting;
+async function getCommentUsingAsyncAwait(){
+    const response = await fetch('/data');
+    const comments = await response.json();
+    
+    // Add it to the page.
+    const commentContainer = document.getElementById('comment-container');
+    commentContainer.innerText = comments;
 }
+
+
+
+
+  
