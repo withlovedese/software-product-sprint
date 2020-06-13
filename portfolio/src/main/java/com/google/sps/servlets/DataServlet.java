@@ -18,6 +18,9 @@ import java.io.IOException;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.Arrays;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -51,13 +54,16 @@ public class DataServlet extends HttpServlet {
     // Get the input from the form.
     String text = getParameter(request, "text-input", "");
 
-    // Break the text into individual words.
-    String[] words = text.split("\\s*,\\s*");
+    //create entity
+    Entity taskEntity = new Entity("Task");
+    taskEntity.setProperty("title", text);
 
-    // Respond with the result.
-    response.setContentType("text/html;");
+    //"Store comments"
     myComments.add(text);
-    response.getWriter().println(Arrays.toString(words));
+    
+    //store entity
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    datastore.put(taskEntity);
 
     // Redirect back to the HTML page.
     response.sendRedirect("/index.html");
