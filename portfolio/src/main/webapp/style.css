@@ -5,13 +5,25 @@
   src: local('Open Sans'), local('OpenSans'), url(https://fonts.gstatic.com/s/productsans/v5/HYvgU2fE2nRJvZ5JFAumwegdm0LZdjqr5-oayXSOefg.woff2) format('woff2');
 }
 
+#name {
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%, -50%);
+  font-family: Product Sans;
+  color: white;
+  text-align: center;
+  font-size: xx-large;
+  white-space: nowrap;
+}
+
 #content {
-  margin-left: auto;
   margin-right: auto;
+  margin-left: auto;
+  margin-top: 750px;
   width: 650px;
   font-family: Product Sans;
   color: white;
-  padding: 200px;
 }
 
 #greeting-container {
