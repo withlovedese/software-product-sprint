@@ -36,6 +36,31 @@ async function getCommentUsingAsyncAwait(){
     commentContainer.innerText = comments;
 }
 
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+/** Creates a chart and adds it to the page. */
+function drawChart() {
+  const data = new google.visualization.DataTable();
+  data.addColumn('string', 'Qualities');
+  data.addColumn('number', 'Percent');
+        data.addRows([
+          ['Optimism', 30],
+          ['Kindness', 20],
+          ['Resilience', 15]
+        ]);
+
+  const options = {
+    'title': 'My Personality',
+    'width':500,
+    'height':400
+  };
+
+  const chart = new google.visualization.PieChart(
+      document.getElementById('chart-container'));
+  chart.draw(data, options);
+}
+
 
 
 
