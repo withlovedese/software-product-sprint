@@ -21,6 +21,9 @@ import java.util.Arrays;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,9 +40,16 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
-    //greets.add("Whats up");
-    //greets.add("Hi Dese!");
-    //greets.add("Hows it going");
+    Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    PreparedQuery results = datastore.prepare(query);
+    
+    for (Entity entity : results.asIterable()) {
+        String title = (String) entity.getProperty("title");
+        long timestamp = (long) entity.getProperty("timestamp");
+
+        myComments.add(title);
+    }
 
     //convert arraylist to json
     String json = new Gson().toJson(myComments);
@@ -53,13 +63,15 @@ public class DataServlet extends HttpServlet {
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
     // Get the input from the form.
     String text = getParameter(request, "text-input", "");
+    long timestamp = System.currentTimeMillis();
 
     //create entity
     Entity taskEntity = new Entity("Task");
     taskEntity.setProperty("title", text);
+    taskEntity.setProperty("timestamp", timestamp);
 
     //"Store comments"
-    myComments.add(text);
+    //myComments.add(text);
     
     //store entity
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
