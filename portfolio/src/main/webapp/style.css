@@ -13,7 +13,7 @@
   font-family: Product Sans;
   color: white;
   text-align: center;
-  font-size: xx-large;
+  font-size: x-large;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,7 +36,16 @@
   margin-top: 100px;
 }
 
-#content {
+#about{
+  margin-right: 150px;
+  margin-left: 150px;
+  margin-top: 750px;
+  width: 650px;
+  font-family: Product Sans;
+  color: white;  
+}
+
+#other {
   margin-right: auto;
   margin-left: auto;
   margin-top: 750px;
@@ -60,6 +69,12 @@ a {
   padding: 1rem 3rem;
   color: #f4f4f4;
   text-transform: uppercase;
+}
+
+h2{
+    font-size: 200%;
+    color:rgb(146, 148, 248);
+    text-align: center;
 }
 
 button.btn {
@@ -106,6 +121,14 @@ button.btn {
 
 .btn:hover:before {
   left: 100%;
+}
+
+.headshot{
+   opacity: 1;
+   height: auto;
+   width: 350px;
+   float: left;
+   padding-right: 50px;
 }
 
 html {
