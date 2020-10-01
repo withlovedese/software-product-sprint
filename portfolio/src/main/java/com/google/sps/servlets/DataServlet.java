@@ -40,7 +40,7 @@ public class DataServlet extends HttpServlet {
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     
-    Query query = new Query("Task").addSort("timestamp", SortDirection.DESCENDING);
+    Query query = new Query("Comment").addSort("timestamp", SortDirection.DESCENDING);
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
     PreparedQuery results = datastore.prepare(query);
     
@@ -66,16 +66,16 @@ public class DataServlet extends HttpServlet {
     long timestamp = System.currentTimeMillis();
 
     //create entity
-    Entity taskEntity = new Entity("Task");
-    taskEntity.setProperty("title", text);
-    taskEntity.setProperty("timestamp", timestamp);
+    Entity commentEntity = new Entity("Comment");
+    commentEntity.setProperty("title", text);
+    commentEntity.setProperty("timestamp", timestamp);
 
     //"Store comments"
     //myComments.add(text);
     
     //store entity
     DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-    datastore.put(taskEntity);
+    datastore.put(commentEntity);
 
     // Redirect back to the HTML page.
     response.sendRedirect("/index.html");

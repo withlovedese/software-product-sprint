@@ -14,12 +14,39 @@
   <body>
       
     <div id="name">
-      <h1>Adesemi Chloe Elumaro</h1>
+      <h1>Adesemi Chloe Elumaro</h1><br>
     </div>
-    <div id="content">
+    <div id = "resume-container">
+        <a href="../Files/RESUME.pdf" target="_blank" class= "btn">RESUME</a>
+    </div>
+
+    
+    
+    <div id="about">
+        
+        <h2>ABOUT</h2><br>
+      
+      <img src="../images/IMG_3014.JPG" alt="Adesemi Elumaro's headshot" class="headshot">
+      <p> 
+          Hi there! Thank you for stopping by my page!<br><br>
+
+          My name is Adesemi Elumaro but my friends call me **Dese** (pronounced day-shay)! 
+          I was born here in the United States but have grown up in Nigeria (my home country), 
+          England, and India! <br><br>
+          
+          I am currently a sophomore at Duke University majoring in Computer 
+          Science and minoring in Economics and Theater Studies! I am really interested in exploring 
+          how the intersection of technology, finance, and business can help Nigeria and other developing 
+          countries play a larger role in the global economy!<br><br>
+
+          Let's talk about how we can make the world a better place! I am currently in Durham, NC.</p>
+      
+    </div>
+
+    <div id="other">
         
       <p>Click here to see some of my favorite quotes:</p>
-      <button onclick="addRandomGreeting()">Click for quotes :)</button>
+      <button onclick="addRandomGreeting()" class="btn">Click for quotes :)</button>
       <div id="greeting-container"></div>
       
       <form action="/data" method="POST">
@@ -31,7 +58,7 @@
       </form>
 
       <p> Click to see previous comments!<p>
-      <button onclick="getCommentUsingAsyncAwait()">Comments</button>
+      <button onclick="getCommentUsingAsyncAwait()" class="btn">Comments</button>
       <ul id="comment-container"></ul>
 
     </div>
